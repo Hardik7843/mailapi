@@ -9,9 +9,18 @@ const app = express();
 // Use the bodyParser middleware to parse JSON request bodies
 app.use(bodyParser.json());
 
+
+
+
+// app.use(cors({
+//   origin: 'http://localhost:3000'
+// }));
+
+
 app.use(cors({
-  origin: 'http://localhost:3000'
+  origin: 'https://flex-trips.vercel.app'
 }));
+
 
 
 app.get('/', (req, res) => {
@@ -20,6 +29,9 @@ app.get('/', (req, res) => {
 
 // Define a route for sending an email
 app.post('/send-email', (req, res) => {
+
+  console.log(req.url);
+  
   // Get the subject and recipient email address from the request body
   const { subject, recipient, message } = req.body;
 
